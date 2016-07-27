@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gestion des etudiants - INPT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <style>
+        .fa{
+            color : darkblue;
+            font-size: 25px;
+        }
+        .fa:hover{
+            color: blue;
+        }
+        #ga{
+
+            font-family: Impact;
+            color : #1ccad5;
+        }
+        body{
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+            color: white;
+            background-color: #087f95;
+        }
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+        #messi{
+
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">INPT</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="{{ path('absence_home') }}">Home</a></li>
+                <li><a href="{{ path('index_etudiant') }}">Etudiants</a></li>
+                <li><a href="{{ path('index_classe') }}">Classes</a></li>
+                <li><a href="{{ path('index_absence') }}">Absences</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://localhost/sga/web/app_dev.php/logout"> Se deconnecter</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="jumbotron" id="ga">
+    <div class="container text-center">
+        <h1>Gestion des absences</h1>
+        <p>INPT</p>
+    </div>
+</div>
+
+<div class="container">
+    <h2></h2>
+    <div class="btn-group btn-group-justified">
+        <a href="{{ path('list_absence') }}" class="btn btn-success">Consulter</a>
+        <a href="{{ path('add_absence') }}" class="btn btn-info">Ajouter</a>
+        <a href="{{ path('delete_absence') }}" class="btn btn-danger">Supprimer</a>
+        <a href="{{ path('edit_absence') }}" class="btn btn-warning">Modifier</a>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <h3> Les entrées d'absences ajoutée </h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ETUDIANT</th>
+            <th>DATE</th>
+            <th>Nombre de vacation </th>
+            <th>Modifier </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for a in absences %}
+            <tr>
+                <td>{{ a.etudiant.nom }}</td>
+                <td>{{ a.date | date('d/m/Y')}}</td>
+                <td>{{ a.nbVacation }}</td>
+                <td><a href="{{ path('edit_absence_form', {'id':a.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>
