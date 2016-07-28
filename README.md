@@ -1,6 +1,9 @@
 # SGA
 Web site for Absence Management
+
 Site web pour la gestion des absences avec Symfony 3
+
+Pour voir une vidéo de démonstration sur youtube : https://www.youtube.com/watch?v=L1ijHI4FGhc
 
 
 Installation
